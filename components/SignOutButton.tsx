@@ -1,13 +1,17 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useClerk } from "@clerk/nextjs";
 
-export const SignOutButton = () => {
+const SignOutButton = () => {
+  const router = useRouter();
   const { signOut } = useClerk();
 
-  return (
-    // Clicking this button signs out a user
-    // and redirects them to the home page "/".
-    <button onClick={() => signOut({ redirectUrl: "/" })}>Sign out</button>
-  );
+  const handleSignOut = async () => {
+    router.push("/public"); // Redirect ke halaman utama
+    await signOut(); // Sign out dari Clerk
+  };
+
+  return <button onClick={handleSignOut}>Sign Out</button>;
 };
+
+export default SignOutButton;

@@ -4,6 +4,8 @@ import { httpAction } from "./_generated/server";
 import { Webhook } from "svix";
 import { internal } from "./_generated/api";
 
+let clerkWebhookSecret = process.env.CLERK_WEBHOOK_SECRET;
+
 const validatePayload = async (
   req: Request
 ): Promise<WebhookEvent | undefined> => {

@@ -10,20 +10,20 @@ type Props = {
 };
 
 const convex_url = process.env.NEXT_PUBLIC_CONVEX_URL || "";
+const convex = new ConvexReactClient(convex_url);
 
-const client = new ConvexReactClient(convex_url);
-
-const ConvexClientProvider = ({ children }: Props) => {
+const ConvexAuthProvider = ({ children }: Props) => {
   return (
     <ClerkProvider>
-      <ConvexProviderWithClerk useAuth={useAuth} client={client}>
-        <Authenticated>{children}</Authenticated>
-        <AuthLoading>
+      <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
+        {children}
+        {/* <Authenticated>{children}</Authenticated> */}
+        {/* <AuthLoading>
           <LoadingLogo />
-        </AuthLoading>
+        </AuthLoading> */}
       </ConvexProviderWithClerk>
     </ClerkProvider>
   );
 };
 
-export default ConvexClientProvider;
+export default ConvexAuthProvider;

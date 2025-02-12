@@ -1,10 +1,10 @@
-"use client";
+import SidebarWrapper from "@/components/shared/sidebar/SidebarWrapper";
 import React from "react";
-import ConvexClientProvider from "@/provider/ConvexClientProvider";
+
 type Props = {
   children: React.ReactNode;
 };
 
 export default function layout({ children }: Props) {
-  return <ConvexClientProvider>{children}</ConvexClientProvider>;
+  return <SidebarWrapper>{children}</SidebarWrapper>;
 }
