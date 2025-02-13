@@ -1,5 +1,4 @@
 import SidebarWrapper from "@/components/shared/sidebar/SidebarWrapper";
-import React from "react";
 
 type Props = {
   children: React.ReactNode;
